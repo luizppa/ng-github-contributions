@@ -1,0 +1,13 @@
+.title{
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 160;
+}
+
+.contributions-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 160;
+}
