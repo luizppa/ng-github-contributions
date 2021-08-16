@@ -11,20 +11,18 @@ const DEFAULT_NUMBER_OF_WEEKS = 53;
 export class GithubBoardComponent implements OnInit {
   @Input() weeksNumber: number = DEFAULT_NUMBER_OF_WEEKS;
   @Input() endDate: Date = new Date();
-  startDate: Date | null = null;
+  @Input() profile: string = '';
+  @Input() token: string = '';
   public weeks: ContributionInfo[][] = [];
 
   constructor(private githubService: GithubServiceService) { }
 
   ngOnInit(): void {
-    if(!this.startDate){
-      this.startDate = new Date(this.endDate);
-      this.startDate.setDate(this.startDate.getDate() - (this.endDate.getDay() + 1 * this.weeksNumber * 7))
-    }
-    this.githubService.loadData('luizppa', this.startDate, () => this.loadContributions());
+    this.githubService.loadData(this.profile, this.token).then(() => this.loadContributions());
   }
 
   private loadContributions(){
+    this.weeks = [];
     const firstWeekDay = this.endDate.getDay();
     const currentWeek = new Date(this.endDate);
     for(let i = 0; i < this.weeksNumber; i++){
@@ -39,9 +37,10 @@ export class GithubBoardComponent implements OnInit {
     const weekInfo: ContributionInfo[] = [];
     const currentDate = new Date(date);
     while(true){
+      const contribution = this.githubService.getContributions(currentDate);
       weekInfo.push({
+        ...contribution,
         date: new Date(currentDate),
-        contributions: this.githubService.getContributions(currentDate),
       });
       
       if(currentDate.getDay() === 0){

@@ -1,5 +1,5 @@
 <div class="board-column-container">
     <div class="cell-item" *ngFor="let day of week">
-        <app-board-cell [date]="day.date" [contributions]="day.contributions"></app-board-cell>
+        <app-board-cell [date]="day.date" [contributions]="day.contributionsCount" [colorIntensity]="day.colorIntensity"></app-board-cell>
     </div>
 </div>
