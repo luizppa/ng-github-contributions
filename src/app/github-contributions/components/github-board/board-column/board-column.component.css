@@ -1,0 +1,9 @@
+.board-column-container{
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.cell-item{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
