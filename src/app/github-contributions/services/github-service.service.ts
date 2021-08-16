@@ -1,74 +1,89 @@
 import { Injectable } from '@angular/core';
-import { Octokit } from "@octokit/rest";
-import { Observer } from 'rxjs';
-import { EventsResponse, GithubEvent, GithubEventType, PushEventPayload } from '../models/event-response.model';
+import { graphql } from "@octokit/graphql";
+import { HttpClient } from '@angular/common/http';
+import { ContributionsResponse, DayContributionInfo, GithubEventType, UserContributions, WeekContributionInfo } from '../models/event-response.model';
+import { Subject } from 'rxjs';
 
 interface Contributions {
-  [key: string]: number;
+  [key: string]: ContributionInfo;
 }
 
 export interface ContributionInfo {
   date: Date;
-  contributions: number;
+  contributionsCount: number;
+  colorIntensity: number;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class GithubServiceService {
-  private octokit = new Octokit();
   private contributions: Contributions = {};
+  private contributionsSubject: Subject<Contributions> = new Subject<Contributions>();
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  public loadData(profile: string, limitDate: Date, callback: () => void, page: number = 1): Promise<void>{
-    return this.octokit.activity.listPublicEventsForUser({
-      username: profile,
-      per_page: 100,
-      page: page,
-    })
-    .then((events) => {
-      this.countEvents(events as EventsResponse);
-      if(this.shouldFetch(limitDate, events as EventsResponse)){
-        setTimeout(() => this.loadData(profile, limitDate, callback, page + 1), 200);
+  public async loadData(profile: string, token: string){
+
+    const graphqlQuery = `
+      query ($profile: String!) {
+        user(login: $profile) {
+          contributionsCollection {
+            contributionCalendar {
+              colors
+              totalContributions
+              weeks {
+                contributionDays {
+                  contributionCount
+                  date
+                  color
+                }
+              }
+            }
+          }
+        }
       }
-      else{
-        callback();
-      }
+    `
+    return graphql(graphqlQuery, {
+      profile,
+      headers: {
+        authorization: `token ${token}`,
+      },
+    }).then((res) => {
+      const userContributions = (res as ContributionsResponse).user;
+      this.countEvents(userContributions);
+      this.contributionsSubject.next(this.contributions);
     });
   }
 
-  private shouldFetch(limitDate: Date, events: EventsResponse): boolean {
+  public subscribeContributions(callback: (contributions: Contributions) => void) {
+    return this.contributionsSubject.subscribe(callback);
+  }
 
-    return !!events.data.length && !events.data.some(event => {
-      const eventDate = new Date(event.created_at as string);
-      return eventDate.getTime() < limitDate.getTime();
+  private countEvents(userContributions: UserContributions){
+    const calendar  = userContributions.contributionsCollection.contributionCalendar;
+
+    calendar.weeks.forEach((week: WeekContributionInfo) => {
+      week.contributionDays.forEach((day: DayContributionInfo) => {
+        this.contributions[day.date] = {
+          date: new Date(day.date),
+          contributionsCount: day.contributionCount,
+          colorIntensity: calendar.colors.indexOf(day.color),
+        };
+      })
     })
   }
 
-  private countEvents(events: EventsResponse){
-    events.data.forEach((event: GithubEvent) => {
-      const eventDate = new Date(event.created_at);
-      if(!this.contributions[eventDate.toLocaleDateString()]){
-        this.contributions[eventDate.toLocaleDateString()] = 0;
-      }
-
-      switch(event.type){
-        case GithubEventType.PUSH:
-          const eventPayload = event.payload as PushEventPayload;
-          this.contributions[eventDate.toLocaleDateString()] += eventPayload.distinct_size;
-          break;
-        case GithubEventType.CREATE:
-        case GithubEventType.ISSUE_COMMENT:
-        case GithubEventType.PULL_REQUEST:
-        case GithubEventType.CODE_REVIEW:
-          this.contributions[eventDate.toLocaleDateString()] += 1;
-          break; 
-      }
-    })
+  public getContributions(date: Date) {
+    const key = `${date.getFullYear()}-${this.expand(date.getMonth() + 1)}-${this.expand(date.getDate())}`;
+    return this.contributions[key];
   }
 
-  public getContributions(date: Date): number {
-    return this.contributions[date.toLocaleDateString()] || 0;
+  private expand(n: number){
+    if(n < 10){
+      return `0${n}`;
+    }
+
+    return n.toString();
   }
 }
