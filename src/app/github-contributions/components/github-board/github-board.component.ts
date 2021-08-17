@@ -14,6 +14,7 @@ export class GithubBoardComponent implements OnInit {
   @Input() options: GithubBoardOptions = {};
   @Input() onCellClick?: (info: ContributionInfo) => void;
   private endDate: Date = new Date();
+  public loading: boolean = true;
   public weeks: ContributionInfo[][] = [];
 
   constructor(private githubService: GithubServiceService) { }
@@ -34,6 +35,7 @@ export class GithubBoardComponent implements OnInit {
       currentWeek.setDate(currentWeek.getDate() - dayOffset);
     }
     this.weeks.reverse();
+    this.loading = false;
   }
 
   private buildWeek(contributions: Contributions, date: Date): ContributionInfo[]{
