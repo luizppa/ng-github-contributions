@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Themes } from 'src/app/github-contributions/constants';
 import { ColorIntensity } from 'src/app/github-contributions/services/github-service.service';
-import { GithubBoardColorPalette } from '../github-board.component';
+import { GithubBoardColorPalette, GithubBoardOptions } from '../github-board.component';
 
 const months = [
   'Jan',
@@ -27,7 +27,7 @@ export class BoardCellComponent implements OnInit {
   @Input() date: Date = new Date;
   @Input() contributions: number = 0;
   @Input() colorIntensity: number = 0;
-  @Input() colorPalette?: GithubBoardColorPalette;
+  @Input() options: GithubBoardOptions = {};
 
   constructor() { }
 
@@ -35,7 +35,7 @@ export class BoardCellComponent implements OnInit {
   }
 
   public get color(){
-    const colorPalette = this.colorPalette || Themes.default;
+    const { colorPalette = Themes.default } = this.options;
     switch(this.colorIntensity){
       case ColorIntensity.LOW: return colorPalette.low;
       case ColorIntensity.MEDIUM: return colorPalette.medium;

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ContributionInfo, GithubServiceService } from '../../services/github-service.service';
+import { ContributionInfo, Contributions, GithubServiceService } from '../../services/github-service.service';
 
 const DEFAULT_NUMBER_OF_WEEKS = 53;
 
@@ -14,7 +14,7 @@ export interface GithubBoardColorPalette {
 export interface GithubBoardOptions {
   weeksNumber?: number;
   colorPalette?: GithubBoardColorPalette;
-  size?: number;
+  cellSize?: number;
 }
 
 @Component({
@@ -33,28 +33,28 @@ export class GithubBoardComponent implements OnInit {
   constructor(private githubService: GithubServiceService) { }
 
   ngOnInit(): void {
-    this.githubService.loadData(this.profile, this.token).then(() => this.loadContributions());
+    this.githubService.loadData(this.profile, this.token).then((contributions) => this.loadContributions(contributions));
   }
 
-  private loadContributions(){
+  private loadContributions(contributions: Contributions){
     this.weeks = [];
     const { weeksNumber = DEFAULT_NUMBER_OF_WEEKS } = this.options;
     const firstWeekDay = this.endDate.getDay();
     const currentWeek = new Date(this.endDate);
 
     for(let i = 0; i < weeksNumber; i++){
-      this.weeks.push(this.buildWeek(currentWeek));
+      this.weeks.push(this.buildWeek(contributions, currentWeek));
       const dayOffset = i === 0 ? firstWeekDay + 1 : 7;
       currentWeek.setDate(currentWeek.getDate() - dayOffset);
     }
     this.weeks.reverse();
   }
 
-  private buildWeek(date: Date): ContributionInfo[]{
+  private buildWeek(contributions: Contributions, date: Date): ContributionInfo[]{
     const weekInfo: ContributionInfo[] = [];
     const currentDate = new Date(date);
     while(weekInfo.length <= date.getDay()){
-      const contribution = this.githubService.getContributions(currentDate);
+      const contribution = this.githubService.getContributions(contributions, currentDate);
       weekInfo.push({
         ...contribution,
         date: new Date(currentDate),

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { graphql } from "@octokit/graphql";
 import { HttpClient } from '@angular/common/http';
 import { ContributionsResponse, DayContributionInfo, GithubEventType, UserContributions, WeekContributionInfo } from '../models/event-response.model';
-import { Subject } from 'rxjs';
 
 export enum ColorIntensity{
   NONE=-1,
@@ -12,7 +11,7 @@ export enum ColorIntensity{
   HIGHER=3,
 }
 
-interface Contributions {
+export interface Contributions {
   [key: string]: ContributionInfo;
 }
 
@@ -26,13 +25,10 @@ export interface ContributionInfo {
   providedIn: 'root'
 })
 export class GithubServiceService {
-  private contributions: Contributions = {};
-  private contributionsSubject: Subject<Contributions> = new Subject<Contributions>();
 
   constructor(private http: HttpClient) { }
 
-  public async loadData(profile: string, token: string){
-
+  public async loadData(profile: string, token: string): Promise<Contributions>{
     // const graphqlQuery = `
     //   query ($profile: String!) {
     //     user(login: $profile) {
@@ -59,33 +55,32 @@ export class GithubServiceService {
     //   },
     // }).then((res) => {
     //   const userContributions = (res as ContributionsResponse).user;
-    //   this.countEvents(userContributions);
-    //   this.contributionsSubject.next(this.contributions);
+    //   const contributions = this.countEvents(userContributions);
+    //   return contributions;
     // });
-    return Promise.resolve();
+    return Promise.resolve({});
   }
 
-  public subscribeContributions(callback: (contributions: Contributions) => void) {
-    return this.contributionsSubject.subscribe(callback);
-  }
-
-  private countEvents(userContributions: UserContributions){
+  private countEvents(userContributions: UserContributions): Contributions {
     const calendar  = userContributions.contributionsCollection.contributionCalendar;
+    const contributions: Contributions = {}
 
     calendar.weeks.forEach((week: WeekContributionInfo) => {
       week.contributionDays.forEach((day: DayContributionInfo) => {
-        this.contributions[day.date] = {
+        contributions[day.date] = {
           date: new Date(day.date),
           contributionsCount: day.contributionCount,
           colorIntensity: calendar.colors.indexOf(day.color) as ColorIntensity,
         };
       })
-    })
+    });
+
+    return contributions;
   }
 
-  public getContributions(date: Date): ContributionInfo {
+  public getContributions(contributions: Contributions, date: Date): ContributionInfo {
     // const key = `${date.getFullYear()}-${this.expand(date.getMonth() + 1)}-${this.expand(date.getDate())}`;
-    // return this.contributions[key];
+    // return contributions[key];
     const colorIntensity = Math.floor(Math.random() * 5) - 1;
     return {
       date,
@@ -94,7 +89,7 @@ export class GithubServiceService {
     }
   }
 
-  private expand(n: number){
+  private expand(n: number): string{
     if(n < 10){
       return `0${n}`;
     }

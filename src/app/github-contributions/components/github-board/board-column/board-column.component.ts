@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Themes } from 'src/app/github-contributions/constants';
 import { ContributionInfo } from 'src/app/github-contributions/services/github-service.service';
-import { GithubBoardColorPalette } from '../github-board.component';
+import { GithubBoardColorPalette, GithubBoardOptions } from '../github-board.component';
 
 @Component({
   selector: 'app-board-column',
@@ -10,7 +10,7 @@ import { GithubBoardColorPalette } from '../github-board.component';
 })
 export class BoardColumnComponent implements OnInit {
   @Input() week: ContributionInfo[] = [];
-  @Input() colorPalette?: GithubBoardColorPalette; 
+  @Input() options: GithubBoardOptions = {};
 
   constructor() { }
 

@@ -2,5 +2,8 @@
   <h2>{{ title }}</h2>
 </div>
 <div class="contributions-container">
+  <app-github-board [profile]="'luizppa'" [token]="token"></app-github-board>
+</div>
+<div class="contributions-container">
   <app-github-board [profile]="'luizppa'" [token]="token" [options]="boardOptions"></app-github-board>
 </div>
