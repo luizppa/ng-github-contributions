@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Themes } from 'src/app/github-contributions/constants';
-import { ContributionInfo } from 'src/app/github-contributions/services/github-service.service';
-import { GithubBoardColorPalette, GithubBoardOptions } from '../github-board.component';
+import { GithubBoardOptions, ContributionInfo } from 'src/app/github-contributions/types';
 
 @Component({
   selector: 'app-board-column',

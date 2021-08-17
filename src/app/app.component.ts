@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { GithubBoardOptions } from './github-contributions/components/github-board/github-board.component';
 import { Themes } from './github-contributions/constants';
+import { GithubBoardOptions } from './github-contributions/types';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,6 @@ export class AppComponent {
 
   boardOptions: GithubBoardOptions = {
     colorPalette: Themes.purple,
-    cellSize: 30,
+    cellSize: 18,
   };
 }

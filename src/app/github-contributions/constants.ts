@@ -1,4 +1,6 @@
-import { GithubBoardColorPalette } from "./components/github-board/github-board.component";
+export const DEFAULT_CELL_SIZE = 10;
+
+export const DEFAULT_NUMBER_OF_WEEKS = 53;
 
 export const Themes = {
     default: {
@@ -16,3 +18,18 @@ export const Themes = {
         higher: '#381A7A',
     }
 }
+
+export const Months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];

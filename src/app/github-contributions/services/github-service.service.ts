@@ -1,25 +1,15 @@
 import { Injectable } from '@angular/core';
 import { graphql } from "@octokit/graphql";
 import { HttpClient } from '@angular/common/http';
-import { ContributionsResponse, DayContributionInfo, GithubEventType, UserContributions, WeekContributionInfo } from '../models/event-response.model';
-
-export enum ColorIntensity{
-  NONE=-1,
-  LOW=0,
-  MEDIUM=1,
-  HIGH=2,
-  HIGHER=3,
-}
-
-export interface Contributions {
-  [key: string]: ContributionInfo;
-}
-
-export interface ContributionInfo {
-  date: Date;
-  contributionsCount: number;
-  colorIntensity: ColorIntensity;
-}
+import {
+  ContributionInfo,
+  Contributions,
+  ContributionsResponse,
+  DayContributionInfo,
+  UserContributions,
+  WeekContributionInfo
+} from '../types';
+import { ColorIntensity } from '../enums';
 
 @Injectable({
   providedIn: 'root'

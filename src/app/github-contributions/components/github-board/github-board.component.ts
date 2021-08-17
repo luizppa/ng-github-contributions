@@ -1,21 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ContributionInfo, Contributions, GithubServiceService } from '../../services/github-service.service';
-
-const DEFAULT_NUMBER_OF_WEEKS = 53;
-
-export interface GithubBoardColorPalette {
-  none: string;
-  low: string;
-  medium: string;
-  high: string;
-  higher: string;
-}
-
-export interface GithubBoardOptions {
-  weeksNumber?: number;
-  colorPalette?: GithubBoardColorPalette;
-  cellSize?: number;
-}
+import { DEFAULT_NUMBER_OF_WEEKS } from '../../constants';
+import { GithubServiceService } from '../../services/github-service.service';
+import { GithubBoardOptions, ContributionInfo, Contributions,  } from '../../types';
 
 @Component({
   selector: 'app-github-board',

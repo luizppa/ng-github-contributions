@@ -1,22 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Themes } from 'src/app/github-contributions/constants';
-import { ColorIntensity } from 'src/app/github-contributions/services/github-service.service';
-import { GithubBoardColorPalette, GithubBoardOptions } from '../github-board.component';
-
-const months = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-]
+import { DEFAULT_CELL_SIZE, Months, Themes } from 'src/app/github-contributions/constants';
+import { ColorIntensity } from 'src/app/github-contributions/enums';
+import { GithubBoardOptions } from 'src/app/github-contributions/types';
 
 @Component({
   selector: 'app-board-cell',
@@ -34,7 +19,7 @@ export class BoardCellComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public get color(){
+  public get color(): string{
     const { colorPalette = Themes.default } = this.options;
     switch(this.colorIntensity){
       case ColorIntensity.LOW: return colorPalette.low;
@@ -45,12 +30,17 @@ export class BoardCellComponent implements OnInit {
     }
   }
 
-  public get tooltipText(){
+  public get tooltipText(): string{
     return `${this.contributions} contributions on ${this.dateText}`;
   }
 
-  private get dateText(){
-    return `${months[this.date.getMonth()]} ${this.date.getDate()}, ${this.date.getFullYear()}`;
+  private get dateText(): string{
+    return `${Months[this.date.getMonth()]} ${this.date.getDate()}, ${this.date.getFullYear()}`;
+  }
+
+  public get size(): string{
+    const { cellSize = DEFAULT_CELL_SIZE } = this.options;
+    return `${cellSize}px`;
   }
 
 }

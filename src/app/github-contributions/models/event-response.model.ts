@@ -8,30 +8,3 @@ export enum GithubEventType {
     CODE_REVIEW="PullRequestReviewEvent",
 }
 
-export interface ContributionsResponse {
-    user: UserContributions;
-}
-
-export interface UserContributions {
-    contributionsCollection: ContributionsCollection;
-}
-
-export interface ContributionsCollection {
-    contributionCalendar: ContributionCalendar;
-}
-
-export interface ContributionCalendar {
-    totalContributions: number;
-    weeks: WeekContributionInfo[];
-    colors: string[];
-}
-
-export interface WeekContributionInfo {
-    contributionDays: DayContributionInfo[];
-};
-
-export interface DayContributionInfo {
-    contributionCount: number;
-    date: string;
-    color: string;
-}
