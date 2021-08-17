@@ -3,6 +3,14 @@
     padding-right: 2px;
 }
 
+.horizontal-label {
+    overflow-x: visible;
+}
+
+.label {
+    font-size: 12px;
+}
+
 .cell-item{
     margin-top: 3px;
     margin-bottom: 3px;

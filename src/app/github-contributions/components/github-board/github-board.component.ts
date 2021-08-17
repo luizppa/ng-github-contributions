@@ -41,10 +41,7 @@ export class GithubBoardComponent implements OnInit {
     const currentDate = new Date(date);
     while(weekInfo.length <= date.getDay()){
       const contribution = this.githubService.getContributions(contributions, currentDate);
-      weekInfo.push({
-        ...contribution,
-        date: new Date(currentDate),
-      });
+      weekInfo.push(contribution);
 
       currentDate.setDate(currentDate.getDate() - 1);
     }

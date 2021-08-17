@@ -12,8 +12,18 @@ export class AppComponent {
   title = 'Angular Github Contributions';
   token = environment.token;
 
-  boardOptions: GithubBoardOptions = {
+  boardOptions1: GithubBoardOptions = {
     colorPalette: Themes.purple,
-    cellSize: 18,
   };
+
+  boardOptions2: GithubBoardOptions = {
+    weeksNumber: 26,
+  };
+
+  boardOptions3: GithubBoardOptions = {
+    cellSize: 18,
+    labels: {
+      showMonth: false,
+    }
+  }
 }

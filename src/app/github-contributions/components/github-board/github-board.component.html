@@ -1,5 +1,5 @@
 <div class="board-container">
-    <div *ngFor="let week of weeks">
-        <app-board-column [week]="week" [options]="options"></app-board-column>
+    <div class="columns">
+        <app-board-column *ngFor="let week of weeks" [week]="week" [options]="options"></app-board-column>
     </div>
 </div>

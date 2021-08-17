@@ -2,6 +2,8 @@ export const DEFAULT_CELL_SIZE = 10;
 
 export const DEFAULT_NUMBER_OF_WEEKS = 53;
 
+export const DEFAULT_LABEL_SIZE = 12;
+
 export const Themes = {
     default: {
         none: '#EBEDF0',

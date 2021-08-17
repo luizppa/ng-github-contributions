@@ -1,4 +1,7 @@
 <div class="board-column-container">
+    <div *ngIf="showLabel" class="horizontal-label" [style.width]="labelContainerWidth" [style.height]="labelContainerHeight">
+        <span *ngIf="getMonthLabel(week) !== null" class="label" [style.fontSize]="labelSize">{{ getMonthLabel(week) }}</span>
+    </div>
     <div class="cell-item" *ngFor="let day of week">
         <app-board-cell
             [date]="day.date"

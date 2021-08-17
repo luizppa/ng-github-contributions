@@ -46,6 +46,11 @@ export interface GithubBoardOptions {
     weeksNumber?: number;
     colorPalette?: GithubBoardColorPalette;
     cellSize?: number;
+    labels?: {
+        showMonth?: boolean;
+        showDay?: boolean;
+        size?: number;
+    }
 }
 
 /**
