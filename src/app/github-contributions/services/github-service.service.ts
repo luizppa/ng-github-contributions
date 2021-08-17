@@ -19,36 +19,35 @@ export class GithubServiceService {
   constructor(private http: HttpClient) { }
 
   public async loadData(profile: string, token: string): Promise<Contributions>{
-    // const graphqlQuery = `
-    //   query ($profile: String!) {
-    //     user(login: $profile) {
-    //       contributionsCollection {
-    //         contributionCalendar {
-    //           colors
-    //           totalContributions
-    //           weeks {
-    //             contributionDays {
-    //               contributionCount
-    //               date
-    //               color
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // `
-    // return graphql(graphqlQuery, {
-    //   profile,
-    //   headers: {
-    //     authorization: `token ${token}`,
-    //   },
-    // }).then((res) => {
-    //   const userContributions = (res as ContributionsResponse).user;
-    //   const contributions = this.countEvents(userContributions);
-    //   return contributions;
-    // });
-    return Promise.resolve({});
+    const graphqlQuery = `
+      query ($profile: String!) {
+        user(login: $profile) {
+          contributionsCollection {
+            contributionCalendar {
+              colors
+              totalContributions
+              weeks {
+                contributionDays {
+                  contributionCount
+                  date
+                  color
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+    return graphql(graphqlQuery, {
+      profile,
+      headers: {
+        authorization: `token ${token}`,
+      },
+    }).then((res) => {
+      const userContributions = (res as ContributionsResponse).user;
+      const contributions = this.countEvents(userContributions);
+      return contributions;
+    });
   }
 
   private countEvents(userContributions: UserContributions): Contributions {
@@ -69,14 +68,11 @@ export class GithubServiceService {
   }
 
   public getContributions(contributions: Contributions, date: Date): ContributionInfo {
-    // const key = `${date.getFullYear()}-${this.expand(date.getMonth() + 1)}-${this.expand(date.getDate())}`;
-    // return contributions[key];
-    const colorIntensity = Math.floor(Math.random() * 5) - 1;
+    const key = `${date.getFullYear()}-${this.expand(date.getMonth() + 1)}-${this.expand(date.getDate())}`;
     return {
-      date,
-      colorIntensity: colorIntensity as ColorIntensity,
-      contributionsCount: Math.max(0, 3 * colorIntensity),
-    }
+      ...contributions[key],
+      date: new Date(date),
+    };
   }
 
   private expand(n: number): string{
