@@ -9,11 +9,11 @@ import { GithubBoardOptions, ContributionInfo, Contributions,  } from '../../typ
   styleUrls: ['./github-board.component.css']
 })
 export class GithubBoardComponent implements OnInit {
-  @Input() endDate: Date = new Date();
   @Input() profile: string = '';
   @Input() token: string = '';
   @Input() options: GithubBoardOptions = {};
   @Input() onCellClick?: (info: ContributionInfo) => void;
+  private endDate: Date = new Date();
   public weeks: ContributionInfo[][] = [];
 
   constructor(private githubService: GithubServiceService) { }
@@ -58,6 +58,13 @@ export class GithubBoardComponent implements OnInit {
   public get labelContainerHeight () {
     const { cellSize = DEFAULT_CELL_SIZE } = this.options;
     return `${(cellSize * 2) + 6}px`;
+  }
+
+  public get showLabels () {
+    if(this.options.labels?.showDay == null){
+      return true;
+    }
+    return this.options.labels.showDay;
   }
 
 }

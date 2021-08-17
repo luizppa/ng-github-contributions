@@ -1,13 +1,15 @@
 .title{
-    display: flex;
-    justify-content: center;
+    text-align: center;
     margin-top: 80px;
     margin-bottom: 160;
 }
 
-.contributions-container{
-    display: flex;
-    justify-content: center;
+#overview, #usage{
+    margin: 16px;
     margin-top: 80px;
-    margin-bottom: 160;
+    margin-bottom: 80px;
+}
+
+.contributions-container{
+    margin-bottom: 22px;
 }

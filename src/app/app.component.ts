@@ -13,7 +13,7 @@ export class AppComponent {
   token = environment.token;
 
   boardOptions1: GithubBoardOptions = {
-    colorPalette: Themes.red,
+    colorPalette: Themes.orange,
   };
 
   boardOptions2: GithubBoardOptions = {
@@ -21,9 +21,16 @@ export class AppComponent {
   };
 
   boardOptions3: GithubBoardOptions = {
-    cellSize: 18,
+    cellSize: 16,
+    labels: {
+      size: 14,
+    }
+  }
+
+  boardOptions4: GithubBoardOptions = {
     labels: {
       showMonth: false,
+      showDay: false,
     }
   }
 }
