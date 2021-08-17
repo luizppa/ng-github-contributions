@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DEFAULT_NUMBER_OF_WEEKS } from '../../constants';
+import { DEFAULT_CELL_SIZE, DEFAULT_LABEL_SIZE, DEFAULT_NUMBER_OF_WEEKS } from '../../constants';
 import { GithubServiceService } from '../../services/github-service.service';
 import { GithubBoardOptions, ContributionInfo, Contributions,  } from '../../types';
 
@@ -46,6 +46,18 @@ export class GithubBoardComponent implements OnInit {
       currentDate.setDate(currentDate.getDate() - 1);
     }
     return weekInfo.reverse();
+  }
+
+  public get labelSize () {
+    if(this.options.labels?.size == null){
+      return `${DEFAULT_LABEL_SIZE}px`;
+    }
+    return `${this.options.labels.size}px`;
+  }
+
+  public get labelContainerHeight () {
+    const { cellSize = DEFAULT_CELL_SIZE } = this.options;
+    return `${(cellSize * 2) + 6}px`;
   }
 
 }

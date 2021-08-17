@@ -18,13 +18,7 @@ export class BoardColumnComponent implements OnInit {
   }
 
   public getMonthLabel (week: ContributionInfo[]) {
-    const labelDay = week.find(day => day.date.getDate() === 1);
-    if(labelDay){
-      return Months[labelDay.date.getMonth()];
-    }
-    else{
-      return null;
-    }
+    return week[0].date.getDate() <= 7 ? Months[week[0].date.getMonth()] : null;
   }
 
   public get labelSize () {
@@ -41,9 +35,9 @@ export class BoardColumnComponent implements OnInit {
 
   public get labelContainerHeight () {
     if(this.options.labels?.size == null){
-      return `${DEFAULT_LABEL_SIZE + 10}px`;
+      return `${DEFAULT_LABEL_SIZE + 12}px`;
     }
-    return `${this.options.labels.size + 10}px`;
+    return `${this.options.labels.size + 12}px`;
   }
 
   public get showLabel(){

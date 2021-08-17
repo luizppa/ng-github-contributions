@@ -1,3 +1,14 @@
 .columns, .month-labels {
     display: flex;
 }
+
+.labels-column{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.day-label{
+    margin-right: 4px;
+    text-align: right;
+    align-self: center;
+}

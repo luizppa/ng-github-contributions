@@ -1,5 +1,10 @@
 <div class="board-container">
     <div class="columns">
+        <div class="labels-column">
+            <span [style.fontSize]="labelSize" class="day-label" [style.height]="labelContainerHeight">Fri</span>
+            <span [style.fontSize]="labelSize" class="day-label" [style.height]="labelContainerHeight">Wed</span>
+            <span [style.fontSize]="labelSize" class="day-label" [style.height]="labelContainerHeight">Mon</span>
+        </div>
         <app-board-column *ngFor="let week of weeks" [week]="week" [options]="options"></app-board-column>
     </div>
 </div>
