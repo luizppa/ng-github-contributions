@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Themes } from './github-contributions/constants';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,6 @@ import { environment } from 'src/environments/environment';
 export class AppComponent {
   title = 'Angular Github Contributions';
   token = environment.token;
+
+  boardOptions = {colorPalette: Themes.purple};
 }

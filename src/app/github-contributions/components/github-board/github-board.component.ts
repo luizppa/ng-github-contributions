@@ -3,16 +3,31 @@ import { ContributionInfo, GithubServiceService } from '../../services/github-se
 
 const DEFAULT_NUMBER_OF_WEEKS = 53;
 
+export interface GithubBoardColorPalette {
+  none: string;
+  low: string;
+  medium: string;
+  high: string;
+  higher: string;
+}
+
+export interface GithubBoardOptions {
+  weeksNumber?: number;
+  colorPalette?: GithubBoardColorPalette;
+  size?: number;
+}
+
 @Component({
   selector: 'app-github-board',
   templateUrl: './github-board.component.html',
   styleUrls: ['./github-board.component.css']
 })
 export class GithubBoardComponent implements OnInit {
-  @Input() weeksNumber: number = DEFAULT_NUMBER_OF_WEEKS;
   @Input() endDate: Date = new Date();
   @Input() profile: string = '';
   @Input() token: string = '';
+  @Input() options: GithubBoardOptions = {};
+  @Input() onCellClick?: (info: ContributionInfo) => void;
   public weeks: ContributionInfo[][] = [];
 
   constructor(private githubService: GithubServiceService) { }
@@ -23,9 +38,11 @@ export class GithubBoardComponent implements OnInit {
 
   private loadContributions(){
     this.weeks = [];
+    const { weeksNumber = DEFAULT_NUMBER_OF_WEEKS } = this.options;
     const firstWeekDay = this.endDate.getDay();
     const currentWeek = new Date(this.endDate);
-    for(let i = 0; i < this.weeksNumber; i++){
+
+    for(let i = 0; i < weeksNumber; i++){
       this.weeks.push(this.buildWeek(currentWeek));
       const dayOffset = i === 0 ? firstWeekDay + 1 : 7;
       currentWeek.setDate(currentWeek.getDate() - dayOffset);
@@ -36,16 +53,13 @@ export class GithubBoardComponent implements OnInit {
   private buildWeek(date: Date): ContributionInfo[]{
     const weekInfo: ContributionInfo[] = [];
     const currentDate = new Date(date);
-    while(true){
+    while(weekInfo.length <= date.getDay()){
       const contribution = this.githubService.getContributions(currentDate);
       weekInfo.push({
         ...contribution,
         date: new Date(currentDate),
       });
-      
-      if(currentDate.getDay() === 0){
-        break;
-      }
+
       currentDate.setDate(currentDate.getDate() - 1);
     }
     return weekInfo.reverse();

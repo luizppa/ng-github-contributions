@@ -4,6 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { ContributionsResponse, DayContributionInfo, GithubEventType, UserContributions, WeekContributionInfo } from '../models/event-response.model';
 import { Subject } from 'rxjs';
 
+export enum ColorIntensity{
+  NONE=-1,
+  LOW=0,
+  MEDIUM=1,
+  HIGH=2,
+  HIGHER=3,
+}
+
 interface Contributions {
   [key: string]: ContributionInfo;
 }
@@ -11,7 +19,7 @@ interface Contributions {
 export interface ContributionInfo {
   date: Date;
   contributionsCount: number;
-  colorIntensity: number;
+  colorIntensity: ColorIntensity;
 }
 
 @Injectable({
@@ -25,35 +33,36 @@ export class GithubServiceService {
 
   public async loadData(profile: string, token: string){
 
-    const graphqlQuery = `
-      query ($profile: String!) {
-        user(login: $profile) {
-          contributionsCollection {
-            contributionCalendar {
-              colors
-              totalContributions
-              weeks {
-                contributionDays {
-                  contributionCount
-                  date
-                  color
-                }
-              }
-            }
-          }
-        }
-      }
-    `
-    return graphql(graphqlQuery, {
-      profile,
-      headers: {
-        authorization: `token ${token}`,
-      },
-    }).then((res) => {
-      const userContributions = (res as ContributionsResponse).user;
-      this.countEvents(userContributions);
-      this.contributionsSubject.next(this.contributions);
-    });
+    // const graphqlQuery = `
+    //   query ($profile: String!) {
+    //     user(login: $profile) {
+    //       contributionsCollection {
+    //         contributionCalendar {
+    //           colors
+    //           totalContributions
+    //           weeks {
+    //             contributionDays {
+    //               contributionCount
+    //               date
+    //               color
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // `
+    // return graphql(graphqlQuery, {
+    //   profile,
+    //   headers: {
+    //     authorization: `token ${token}`,
+    //   },
+    // }).then((res) => {
+    //   const userContributions = (res as ContributionsResponse).user;
+    //   this.countEvents(userContributions);
+    //   this.contributionsSubject.next(this.contributions);
+    // });
+    return Promise.resolve();
   }
 
   public subscribeContributions(callback: (contributions: Contributions) => void) {
@@ -68,15 +77,21 @@ export class GithubServiceService {
         this.contributions[day.date] = {
           date: new Date(day.date),
           contributionsCount: day.contributionCount,
-          colorIntensity: calendar.colors.indexOf(day.color),
+          colorIntensity: calendar.colors.indexOf(day.color) as ColorIntensity,
         };
       })
     })
   }
 
-  public getContributions(date: Date) {
-    const key = `${date.getFullYear()}-${this.expand(date.getMonth() + 1)}-${this.expand(date.getDate())}`;
-    return this.contributions[key];
+  public getContributions(date: Date): ContributionInfo {
+    // const key = `${date.getFullYear()}-${this.expand(date.getMonth() + 1)}-${this.expand(date.getDate())}`;
+    // return this.contributions[key];
+    const colorIntensity = Math.floor(Math.random() * 5) - 1;
+    return {
+      date,
+      colorIntensity: colorIntensity as ColorIntensity,
+      contributionsCount: Math.max(0, 3 * colorIntensity),
+    }
   }
 
   private expand(n: number){
