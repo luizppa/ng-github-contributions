@@ -69,4 +69,15 @@ export class GithubBoardComponent implements OnInit {
     return this.options.labels.showDay;
   }
 
+  public get minHeight () {
+    const {
+      cellSize = DEFAULT_CELL_SIZE,
+    } = this.options;
+    let labelSize = DEFAULT_LABEL_SIZE;
+    if(this.options.labels?.size != null){
+      labelSize = this.options.labels.size;
+    }
+    return `${((cellSize + 6) * 7) + labelSize}px`;
+  }
+
 }
