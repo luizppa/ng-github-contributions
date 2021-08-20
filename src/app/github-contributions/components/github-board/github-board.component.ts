@@ -4,7 +4,7 @@ import { GithubServiceService } from '../../services/github-service.service';
 import { GithubBoardOptions, ContributionInfo, Contributions,  } from '../../types';
 
 @Component({
-  selector: 'app-github-board',
+  selector: 'github-board',
   templateUrl: './github-board.component.html',
   styleUrls: ['./github-board.component.css']
 })

@@ -5,6 +5,6 @@
             <span [style.fontSize]="labelSize" class="day-label" [style.height]="labelContainerHeight">Wed</span>
             <span [style.fontSize]="labelSize" class="day-label" [style.height]="labelContainerHeight">Mon</span>
         </div>
-        <app-board-column *ngFor="let week of weeks" [week]="week" [options]="options"></app-board-column>
+        <board-column *ngFor="let week of weeks" [week]="week" [options]="options"></board-column>
     </div>
 </div>

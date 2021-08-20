@@ -3,11 +3,11 @@
         <span *ngIf="getMonthLabel(week) !== null" class="label" [style.fontSize]="labelSize">{{ getMonthLabel(week) }}</span>
     </div>
     <div class="cell-item" *ngFor="let day of week">
-        <app-board-cell
+        <board-cell
             [date]="day.date"
             [contributions]="day.contributionsCount"
             [colorIntensity]="day.colorIntensity"
             [options]="options">
-        </app-board-cell>
+        </board-cell>
     </div>
 </div>

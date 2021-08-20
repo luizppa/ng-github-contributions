@@ -3,7 +3,7 @@ import { DEFAULT_CELL_SIZE, DEFAULT_LABEL_SIZE, Months } from 'src/app/github-co
 import { GithubBoardOptions, ContributionInfo } from 'src/app/github-contributions/types';
 
 @Component({
-  selector: 'app-board-column',
+  selector: 'board-column',
   templateUrl: './board-column.component.html',
   styleUrls: ['./board-column.component.css']
 })

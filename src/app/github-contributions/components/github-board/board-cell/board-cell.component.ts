@@ -4,7 +4,7 @@ import { ColorIntensity } from 'src/app/github-contributions/enums';
 import { GithubBoardOptions } from 'src/app/github-contributions/types';
 
 @Component({
-  selector: 'app-board-cell',
+  selector: 'board-cell',
   templateUrl: './board-cell.component.html',
   styleUrls: ['./board-cell.component.css']
 })
