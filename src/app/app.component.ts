@@ -9,28 +9,4 @@ import { GithubBoardOptions } from './github-contributions/types';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular Github Contributions';
-  token = environment.token;
-
-  boardOptions1: GithubBoardOptions = {
-    colorPalette: Themes.orange,
-  };
-
-  boardOptions2: GithubBoardOptions = {
-    weeksNumber: 26,
-  };
-
-  boardOptions3: GithubBoardOptions = {
-    cellSize: 16,
-    labels: {
-      size: 14,
-    }
-  }
-
-  boardOptions4: GithubBoardOptions = {
-    labels: {
-      showMonth: false,
-      showDay: false,
-    }
-  }
 }

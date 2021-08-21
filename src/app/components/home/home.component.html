@@ -1,0 +1,139 @@
+<div class="home-container">
+    <div class="title">
+        <h2>{{ title }}</h2>
+        <p>Display any user's Github contributions board on your angular apps with ease</p>
+    </div>
+    
+    <div id="overview">
+        <h3>Overview</h3>
+        <p>The component suports info on hover, and click callbacks.</p>
+        <div class="contributions-container">
+            <github-board [profile]="'luizppa'" [token]="token"></github-board>
+        </div>
+    
+        <p>Optionally, you can specify an options object to configure the appearence fo the board. The possible
+            customizations size, color scheme, labels size, labels toggle and time span.</p>
+        <h4>Examples</h4>
+        <p>Custom color palette</p>
+        <div class="contributions-container">
+            <github-board [profile]="'luizppa'" [token]="token" [options]="boardOptions1"></github-board>
+        </div>
+        <p>Custom time span</p>
+        <div class="contributions-container">
+            <github-board [profile]="'luizppa'" [token]="token" [options]="boardOptions2"></github-board>
+        </div>
+        <p>Custom size</p>
+        <div class="contributions-container">
+            <github-board [profile]="'luizppa'" [token]="token" [options]="boardOptions3"></github-board>
+        </div>
+        <p>Hiding labels</p>
+        <div class="contributions-container">
+            <github-board [profile]="'luizppa'" [token]="token" [options]="boardOptions4"></github-board>
+        </div>
+    </div>
+    
+    <div id="usage">
+        <h3>Usage</h3>
+        <p>The available customization options are:</p>
+
+        <h4 id="color-palette">GithubBoardOptions object</h4>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Option</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">cellSize</td>
+                    <td>number</td>
+                    <td>Defines the size of each individual board cell in pixels.</td>
+                </tr>
+                <tr>
+                    <td scope="row">weeksNumber</td>
+                    <td>number</td>
+                    <td>Defines the time span shwon on the board in number of weeks.</td>
+                </tr>
+                <tr>
+                    <td scope="row">colorPalette</td>
+                    <td><a href="#color-palette">GithubBoardColorPalette</a></td>
+                    <td>Defines the color palette for the board cells.</td>
+                </tr>
+                <tr>
+                    <td scope="row">labels</td>
+                    <td><a href="#label-options">GithubBoardLabelOptions</a></td>
+                    <td>Defines the properties of the labels indicating day and month around the board.</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <h4 id="color-palette">GithubBoardColorPalette object</h4>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Option</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">none</td>
+                    <td>string</td>
+                    <td>Defines the color for cells with no contributions.</td>
+                </tr>
+                <tr>
+                    <td scope="row">low</td>
+                    <td>string</td>
+                    <td>Defines the color for cells with 1 - 3 contributions.</td>
+                </tr>
+                <tr>
+                    <td scope="row">medium</td>
+                    <td>string</td>
+                    <td>Defines the color for cells with 4 - 8 contributions.</td>
+                </tr>
+                <tr>
+                    <td scope="row">high</td>
+                    <td>string</td>
+                    <td>Defines the color for cells with 9 - 10 contributions.</td>
+                </tr>
+                <tr>
+                    <td scope="row">higher</td>
+                    <td>string</td>
+                    <td>Defines the color for cells with more than 10 contributions.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>The colors must be specified as strings in any HTML suported format (HEX, rgb, rgba...).</p>
+    
+        <h4 id="label-options">GithubBoardLabelOptions object</h4>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Option</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">showMonth</td>
+                    <td>boolean</td>
+                    <td>Defines whether or not to show month labels.</td>
+                </tr>
+                <tr>
+                    <td scope="row">showDay</td>
+                    <td>boolean</td>
+                    <td>Defines whether or not to show day labels.</td>
+                </tr>
+                <tr>
+                    <td scope="row">size</td>
+                    <td>number</td>
+                    <td>Defines the font size of the labels in pixels.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
