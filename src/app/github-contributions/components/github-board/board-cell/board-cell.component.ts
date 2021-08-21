@@ -40,7 +40,7 @@ export class BoardCellComponent implements OnInit {
   }
 
   public get size(): string{
-    const { cellSize = DEFAULT_CELL_SIZE } = this.options;
+    const cellSize = this.options.cellSize ?? DEFAULT_CELL_SIZE;
     return `${cellSize}px`;
   }
 

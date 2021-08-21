@@ -22,29 +22,22 @@ export class BoardColumnComponent implements OnInit {
   }
 
   public get labelSize () {
-    if(this.options.labels?.size == null){
-      return `${DEFAULT_LABEL_SIZE}px`;
-    }
-    return `${this.options.labels.size}px`;
+    const size = this.options.labels?.size ?? DEFAULT_LABEL_SIZE;
+    return `${size}px`;
   }
 
   public get labelContainerWidth () {
-    const { cellSize = DEFAULT_CELL_SIZE } = this.options;
-    return `${cellSize}px`;
+    const size = this.options.cellSize ?? DEFAULT_CELL_SIZE;
+    return `${size}px`;
   }
 
   public get labelContainerHeight () {
-    if(this.options.labels?.size == null){
-      return `${DEFAULT_LABEL_SIZE + 6}px`;
-    }
-    return `${this.options.labels.size + 6}px`;
+    const size = this.options.labels?.size ?? DEFAULT_LABEL_SIZE;
+    return `${size + 6}px`;
   }
 
   public get showLabel(){
-    if(this.options.labels?.showMonth == null){
-      return true;
-    }
-    return this.options.labels.showMonth;
+    return this.options.labels?.showMonth ?? true;
   }
 
 }

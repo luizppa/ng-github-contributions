@@ -43,10 +43,11 @@ export interface GithubBoardColorPalette {
 }
 
 export interface GithubBoardOptions {
-    weeksNumber?: number;
-    colorPalette?: GithubBoardColorPalette;
     cellSize?: number;
+    weeksNumber?: number;
+    showLegend?: boolean;
     labels?: GithubBoardLabelOptions;
+    colorPalette?: GithubBoardColorPalette;
 }
 
 export interface GithubBoardLabelOptions {

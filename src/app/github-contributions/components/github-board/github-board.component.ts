@@ -51,10 +51,8 @@ export class GithubBoardComponent implements OnInit {
   }
 
   public get labelSize () {
-    if(this.options.labels?.size == null){
-      return `${DEFAULT_LABEL_SIZE}px`;
-    }
-    return `${this.options.labels.size}px`;
+    const size = this.options.labels?.size ?? DEFAULT_LABEL_SIZE;
+    return `${size}px`;
   }
 
   public get labelContainerHeight () {
@@ -63,10 +61,11 @@ export class GithubBoardComponent implements OnInit {
   }
 
   public get showLabels () {
-    if(this.options.labels?.showDay == null){
-      return true;
-    }
-    return this.options.labels.showDay;
+    return this.options.labels?.showDay ?? true;
+  }
+
+  public get showLegend () {
+    return this.options.showLegend ?? true;
   }
 
   public get minHeight () {
@@ -77,7 +76,8 @@ export class GithubBoardComponent implements OnInit {
     if(this.options.labels?.size != null){
       labelSize = this.options.labels.size;
     }
-    return `${((cellSize + 6) * 7) + labelSize}px`;
+    const legendSize = 24;
+    return `${((cellSize + 6) * 7) + labelSize + legendSize}px`;
   }
 
 }
