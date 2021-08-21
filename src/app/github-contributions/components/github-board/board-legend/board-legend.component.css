@@ -1,0 +1,17 @@
+span{
+    color: #57606A;
+    font-size: 12px;
+    height: 12px;
+    margin: 2px;
+    vertical-align: middle;
+}
+
+board-cell {
+    margin: 0px 1px;
+}
+
+.legend {
+    padding: 4px 16px;
+    display: flex;
+    float: right;
+}
