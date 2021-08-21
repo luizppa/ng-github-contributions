@@ -1,12 +1,10 @@
-<div [style.width]="size" [style.height]="size">
-    <span
-        class="github-board-cell"
-        placement="top"
-        [ngbTooltip]="disabled ? '' : tooltipText"
-        tooltipClass="tooltip"
-        [class.pointer]="!disabled"
-        [style.backgroundColor]="color"
-        [style.width]="size"
-        [style.height]="size">
-    </span>
+<div
+    class="github-board-cell"
+    placement="top"
+    [ngbTooltip]="disabled ? '' : tooltipText"
+    tooltipClass="tooltip"
+    [class.pointer]="!disabled"
+    [style.backgroundColor]="color"
+    [style.width]="size"
+    [style.height]="size">
 </div>

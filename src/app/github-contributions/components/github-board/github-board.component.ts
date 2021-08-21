@@ -69,14 +69,10 @@ export class GithubBoardComponent implements OnInit {
   }
 
   public get minHeight () {
-    const {
-      cellSize = DEFAULT_CELL_SIZE,
-    } = this.options;
-    let labelSize = DEFAULT_LABEL_SIZE;
-    if(this.options.labels?.size != null){
-      labelSize = this.options.labels.size;
-    }
-    const legendSize = 24;
+    const cellSize = this.options.cellSize ?? DEFAULT_CELL_SIZE;
+    let labelSize = this.options.labels?.size ?? DEFAULT_LABEL_SIZE;
+    const legendSize = 8 + Math.max(12, cellSize);
+    
     return `${((cellSize + 6) * 7) + labelSize + legendSize}px`;
   }
 

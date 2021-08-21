@@ -1,13 +1,17 @@
-span{
+board-cell {
+    margin: 0px 1px;
+}
+
+.cells-container {
+    display: flex;
+}
+
+.legend-text{
     color: #57606A;
     font-size: 12px;
     height: 12px;
-    margin: 2px;
-    vertical-align: middle;
-}
-
-board-cell {
-    margin: 0px 1px;
+    line-height: 100%;
+    margin: 0px 2px;
 }
 
 .legend {
