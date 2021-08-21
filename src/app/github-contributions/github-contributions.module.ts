@@ -4,12 +4,14 @@ import { GithubBoardComponent } from './components/github-board/github-board.com
 import { BoardCellComponent } from './components/github-board/board-cell/board-cell.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BoardColumnComponent } from './components/github-board/board-column/board-column.component';
+import { BoardLegendComponent } from './components/github-board/board-legend/board-legend.component';
 
 @NgModule({
   declarations: [
     GithubBoardComponent,
     BoardCellComponent,
-    BoardColumnComponent
+    BoardColumnComponent,
+    BoardLegendComponent
   ],
   imports: [
     CommonModule,

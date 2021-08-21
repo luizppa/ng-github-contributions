@@ -13,6 +13,7 @@ export class BoardCellComponent implements OnInit {
   @Input() contributions: number = 0;
   @Input() colorIntensity: number = 0;
   @Input() options: GithubBoardOptions = {};
+  @Input() disabled: boolean = false;
 
   constructor() { }
 

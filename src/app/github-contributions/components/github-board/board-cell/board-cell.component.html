@@ -2,8 +2,9 @@
     <span
         class="github-board-cell"
         placement="top"
-        [ngbTooltip]="tooltipText"
+        [ngbTooltip]="disabled ? '' : tooltipText"
         tooltipClass="tooltip"
+        [class.pointer]="!disabled"
         [style.backgroundColor]="color"
         [style.width]="size"
         [style.height]="size">

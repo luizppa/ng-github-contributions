@@ -35,9 +35,9 @@ export class BoardColumnComponent implements OnInit {
 
   public get labelContainerHeight () {
     if(this.options.labels?.size == null){
-      return `${DEFAULT_LABEL_SIZE + 12}px`;
+      return `${DEFAULT_LABEL_SIZE + 6}px`;
     }
-    return `${this.options.labels.size + 12}px`;
+    return `${this.options.labels.size + 6}px`;
   }
 
   public get showLabel(){

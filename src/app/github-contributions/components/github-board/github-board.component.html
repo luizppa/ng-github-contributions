@@ -7,4 +7,7 @@
         </div>
         <board-column *ngFor="let week of weeks" [week]="week" [options]="options"></board-column>
     </div>
+    <div class="legend-container">
+        <board-legend [options]="options"></board-legend>
+    </div>
 </div>

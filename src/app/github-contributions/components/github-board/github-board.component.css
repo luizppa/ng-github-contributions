@@ -12,3 +12,7 @@
     text-align: right;
     align-self: center;
 }
+
+.legend-container{
+    margin-top: 8px;
+}
