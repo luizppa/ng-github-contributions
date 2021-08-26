@@ -4,8 +4,8 @@
         <p>Display any user's Github contributions board on your angular apps with ease</p>
     </div>
     
-    <div id="overview">
-        <h3>Overview</h3>
+    <div>
+        <h3 id="overview">Overview</h3>
         <p>The component suports info on hover, and click callbacks.</p>
         <div class="contributions-container">
             <github-board [profile]="'luizppa'" [token]="token"></github-board>
@@ -13,8 +13,21 @@
     
         <p>Optionally, you can specify an options object to configure the appearence fo the board. The possible
             customizations size, color scheme, labels size, labels toggle and time span.</p>
-        <h4>Examples</h4>
-        <p>Custom color palette</p>
+        <h3 id="examples">Examples</h3>
+        <p>
+            For a custom color palette, you can either specify each field of the <a href="#color-palette-option">colorPalette</a>
+            option or you can use one of the presets exported by the module thorugh the <code>Themes</code> constant. The available presets are:
+        </p>
+        <code>
+            default: <board-legend></board-legend><br/>
+            purple:  <board-legend [options]="{colorPalette: themes.purple}"></board-legend><br/>
+            orange:  <board-legend [options]="{colorPalette: themes.orange}"></board-legend><br/>
+            red:     <board-legend [options]="{colorPalette: themes.red}"></board-legend><br/>
+            blue:    <board-legend [options]="{colorPalette: themes.blue}"></board-legend><br/>
+        </code>
+        <p>
+            See the example code and result bellow.
+        </p>
         <div class="contributions-container">
             <github-board [profile]="'luizppa'" [token]="token" [options]="boardOptions1"></github-board>
         </div>
@@ -57,7 +70,7 @@
                     <td>Defines the time span shwon on the board in number of weeks.</td>
                 </tr>
                 <tr>
-                    <td scope="row">colorPalette</td>
+                    <td id="color-palette-option" scope="row">colorPalette</td>
                     <td><a href="#color-palette">GithubBoardColorPalette</a></td>
                     <td>Defines the color palette for the board cells.</td>
                 </tr>

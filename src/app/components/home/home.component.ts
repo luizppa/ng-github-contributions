@@ -8,29 +8,33 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  title = 'Angular Github Contributions';
-  token = environment.token;
+  public title = 'Angular Github Contributions';
+  public token = environment.token;
 
-  boardOptions1: GithubBoardOptions = {
+  public boardOptions1: GithubBoardOptions = {
     colorPalette: Themes.orange,
   };
 
-  boardOptions2: GithubBoardOptions = {
+  public boardOptions2: GithubBoardOptions = {
     weeksNumber: 26,
   };
 
-  boardOptions3: GithubBoardOptions = {
+  public boardOptions3: GithubBoardOptions = {
     cellSize: 13,
     labels: {
       size: 12,
-    }
+    },
   }
 
-  boardOptions4: GithubBoardOptions = {
+  public boardOptions4: GithubBoardOptions = {
     labels: {
       showMonth: false,
       showDay: false,
-    }
+    },
+  }
+
+  public get themes () {
+    return Themes;
   }
 
   constructor() { }

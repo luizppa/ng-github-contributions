@@ -18,7 +18,8 @@ import { BoardLegendComponent } from './components/github-board/board-legend/boa
     NgbModule,
   ],
   exports: [
-    GithubBoardComponent
+    GithubBoardComponent,
+    BoardLegendComponent
   ]
 })
 export class GithubContributionsModule { }

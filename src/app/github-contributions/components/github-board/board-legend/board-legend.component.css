@@ -16,6 +16,5 @@ board-cell {
 
 .legend {
     padding: 4px 16px;
-    display: flex;
-    float: right;
+    display: inline-flex;
 }
