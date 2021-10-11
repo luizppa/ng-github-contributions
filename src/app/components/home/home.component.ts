@@ -9,7 +9,6 @@ import { environment } from 'src/environments/environment';
 })
 export class HomeComponent implements OnInit {
   public title = 'Angular Github Contributions';
-  public token = environment.token;
 
   public boardOptions1: GithubBoardOptions = {
     colorPalette: Themes.orange,

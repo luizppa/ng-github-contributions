@@ -10,7 +10,6 @@ import { GithubBoardOptions, ContributionInfo, Contributions,  } from '../../typ
 })
 export class GithubBoardComponent implements OnInit {
   @Input() profile: string = '';
-  @Input() token: string = '';
   @Input() options: GithubBoardOptions = {};
   @Input() onCellClick?: (info: ContributionInfo) => void;
   private endDate: Date = new Date();
@@ -20,7 +19,7 @@ export class GithubBoardComponent implements OnInit {
   constructor(private githubService: GithubServiceService) { }
 
   ngOnInit(): void {
-    this.githubService.loadData(this.profile, this.token).then((contributions) => this.loadContributions(contributions));
+    this.githubService.loadData(this.profile).then((contributions) => this.loadContributions(contributions));
   }
 
   private loadContributions(contributions: Contributions){
