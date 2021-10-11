@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { graphql } from "@octokit/graphql";
 import { HttpClient } from '@angular/common/http';
 import {
   ContributionInfo,
@@ -10,6 +9,7 @@ import {
   WeekContributionInfo
 } from '../types';
 import { ColorIntensity } from '../enums';
+import { environment } from '../environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,32 +18,10 @@ export class GithubServiceService {
 
   constructor(private http: HttpClient) { }
 
-  public async loadData(profile: string, token: string): Promise<Contributions>{
-    const graphqlQuery = `
-      query ($profile: String!) {
-        user(login: $profile) {
-          contributionsCollection {
-            contributionCalendar {
-              colors
-              totalContributions
-              weeks {
-                contributionDays {
-                  contributionCount
-                  date
-                  color
-                }
-              }
-            }
-          }
-        }
-      }
-    `
-    return graphql(graphqlQuery, {
-      profile,
-      headers: {
-        authorization: `token ${token}`,
-      },
-    }).then((res) => {
+  public async loadData(profile: string): Promise<Contributions>{
+    return this.http.post(environment.githubDataEndpoint, { profile })
+    .toPromise()
+    .then((res) => {
       const userContributions = (res as ContributionsResponse).user;
       const contributions = this.countEvents(userContributions);
       return contributions;
