@@ -8,5 +8,14 @@
   },
   "dependencies": {
     "tslib": "^2.0.0"
-  }
+  },
+  "keywords": [
+    "github",
+    "contributions",
+    "contributions calendar",
+    "contributions board",
+    "github contributions",
+    "github mural",
+    "octokit"
+  ]
 }
