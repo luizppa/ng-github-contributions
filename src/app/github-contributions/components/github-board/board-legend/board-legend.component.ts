@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GithubBoardOptions } from 'src/app/github-contributions/types';
+import { GithubBoardOptions } from '../../../types';
 
 @Component({
   selector: 'board-legend',

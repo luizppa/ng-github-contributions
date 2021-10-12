@@ -12,16 +12,16 @@ An angular component to reproduce the appearence and behaviour of the Github con
 ## Overview
 
 Default appearence
-![Example image](./docs/default-appearence.jpg)
+![Example image](https://github.com/luizppa/ng-github-contributions/blob/main/docs/default-appearence.jpg?raw=true)
 
 Custom colors
-![Example image](./docs/custom-colors.jpg)
+![Example image](https://github.com/luizppa/ng-github-contributions/blob/main/docs/custom-colors.jpg?raw=true)
 
 Custom time span
-![Example image](./docs/custom-week-count.jpg)
+![Example image](https://github.com/luizppa/ng-github-contributions/blob/main/docs/custom-week-count.jpg?raw=true)
 
 Hiding labels
-![Example image](./docs/no-labels.jpg)
+![Example image](https://github.com/luizppa/ng-github-contributions/blob/main/docs/no-labels.jpg?raw=true)
 
 ## Usage
 
@@ -30,7 +30,6 @@ Basic usage
 ```html
 <github-board
     [profile]="'luizppa'"
-    [token]="token"
     [onCellClick]="onCellClickHandler"
     [options]="boardOptions">
 </github-board>

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DEFAULT_CELL_SIZE, DEFAULT_LABEL_SIZE, Months } from 'src/app/github-contributions/constants';
-import { GithubBoardOptions, ContributionInfo } from 'src/app/github-contributions/types';
+import { DEFAULT_CELL_SIZE, DEFAULT_LABEL_SIZE, Months } from '../../../constants';
+import { GithubBoardOptions, ContributionInfo } from '../../../types';
 
 @Component({
   selector: 'board-column',

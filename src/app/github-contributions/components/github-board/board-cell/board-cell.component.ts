@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DEFAULT_CELL_SIZE, Months, Themes } from 'src/app/github-contributions/constants';
-import { ColorIntensity } from 'src/app/github-contributions/enums';
-import { GithubBoardOptions } from 'src/app/github-contributions/types';
+import { DEFAULT_CELL_SIZE, Months, Themes } from '../../../constants';
+import { ColorIntensity } from '../../../enums';
+import { GithubBoardOptions } from '../../../types';
 
 @Component({
   selector: 'board-cell',
