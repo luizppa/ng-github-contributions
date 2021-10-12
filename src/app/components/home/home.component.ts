@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GithubBoardOptions, Themes } from 'src/app/github-contributions';
-import { environment } from 'src/environments/environment';
+import { GithubBoardOptions, Themes } from '../../../../projects/ng-github-contributions/src/public-api';
 
 @Component({
   selector: 'app-home',
