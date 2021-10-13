@@ -2,7 +2,7 @@ name: Deploy Demo to Firebase Hosting on merge
 'on':
   push:
     branches:
-      - master
+      - main
       
   workflow_dispatch:
     
@@ -16,12 +16,11 @@ jobs:
         with:
           node-version: '14.15'
           
-      - run: npm install
-      - run: npm run build
+      - run: npm install && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LUIZPPA_COM }}'
           channelId: live
           projectId: luizppa-com
           target: ghcontributions
