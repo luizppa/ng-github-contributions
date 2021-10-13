@@ -3,5 +3,9 @@
   "dest": "../../dist/ng-github-contributions",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "allowedNonPeerDependencies": [
+    "tslib",
+    "@ng-bootstrap/ng-bootstrap"
+  ]
 }
