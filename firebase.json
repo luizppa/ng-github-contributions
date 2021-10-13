@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "target": "ghcontributions",
     "public": "dist/ng-github-contributions-demo",
     "ignore": [
       "firebase.json",

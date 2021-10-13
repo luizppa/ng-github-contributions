@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "luizppa-com"
+  },
+  "targets": {
+    "luizppa-com": {
+      "hosting": {
+        "ghcontributions": [
+          "ghcontributions"
+        ]
+      }
+    }
   }
 }
