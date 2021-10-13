@@ -13,11 +13,11 @@ jobs:
 
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: '14.15'
 
       - run: npm install && npm install -g @angular/cli && ng build --prod ng-github-contributions
 
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
-          package: ../dist/ng-github-contributions/package.json
+          package: ./dist/ng-github-contributions/package.json
