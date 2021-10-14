@@ -1,6 +1,6 @@
 {
   "name": "@luizppa/ng-github-contributions",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": false,
   "peerDependencies": {
     "@angular/common": "^11.2.14",

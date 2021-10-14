@@ -4,6 +4,7 @@ An angular component to reproduce the appearence and behaviour of the Github con
 
 - [Angular Github Contribuions](#angular-github-contribuions)
   - [Overview](#overview)
+  - [Installation](#installation)
   - [Usage](#usage)
     - [Options](#options)
       - [GithubColorPalette Type](#githubcolorpalette-type)
@@ -22,6 +23,32 @@ Custom time span
 
 Hiding labels
 ![Example image](https://github.com/luizppa/ng-github-contributions/blob/main/docs/no-labels.jpg?raw=true)
+
+## Installation
+
+To install from npm:
+
+```
+$ npm i ng-github-contributions
+```
+
+Import `GithubContributionsModule` into your app module:
+
+```javascript
+import { GithubContributionsModule } from "ng-github-contributions";
+
+//...
+
+@NgModule({
+  //...
+  imports: [
+    //...
+    GithubContributionsModule,
+  ],
+  //...
+});
+
+```
 
 ## Usage
 
