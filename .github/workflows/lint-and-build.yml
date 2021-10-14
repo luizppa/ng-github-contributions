@@ -9,7 +9,6 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: 'ts lint'
       - uses: actions/checkout@v2
       
       - uses: actions/setup-node@master
@@ -22,7 +21,6 @@ jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
-      - name: 'ts compile'
       - uses: actions/checkout@v2
       
       - uses: actions/setup-node@master
@@ -35,7 +33,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 'build'
       - uses: actions/checkout@v2
       
       - uses: actions/setup-node@master
