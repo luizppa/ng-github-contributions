@@ -9,11 +9,11 @@ import { GithubBoardOptions } from '../../../types';
   styleUrls: ['./board-cell.component.css']
 })
 export class BoardCellComponent implements OnInit {
-  @Input() date: Date = new Date;
-  @Input() contributions: number = 0;
-  @Input() colorIntensity: number = 0;
+  @Input() date: Date = new Date();
+  @Input() contributions = 0;
+  @Input() colorIntensity = 0;
   @Input() options: GithubBoardOptions = {};
-  @Input() disabled: boolean = false;
+  @Input() disabled = false;
 
   constructor() { }
 
@@ -22,7 +22,7 @@ export class BoardCellComponent implements OnInit {
 
   public get color(): string{
     const { colorPalette = Themes.default } = this.options;
-    switch(this.colorIntensity){
+    switch (this.colorIntensity){
       case ColorIntensity.LOW: return colorPalette.low;
       case ColorIntensity.MEDIUM: return colorPalette.medium;
       case ColorIntensity.HIGH: return colorPalette.high;

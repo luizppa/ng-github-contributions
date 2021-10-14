@@ -1,4 +1,4 @@
-import { ColorIntensity } from "./enums";
+import { ColorIntensity } from './enums';
 
 /**
  * Gituhb graphql interfaces
@@ -23,7 +23,7 @@ export interface ContributionCalendar {
 
 export interface WeekContributionInfo {
     contributionDays: DayContributionInfo[];
-};
+}
 
 export interface DayContributionInfo {
     contributionCount: number;

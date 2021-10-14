@@ -40,7 +40,7 @@ export const Themes = {
         high: '#A82623',
         higher: '#5C1413',
     }
-}
+};
 
 export const Months = [
   'Jan',

@@ -22,22 +22,22 @@ export class HomeComponent implements OnInit {
     labels: {
       size: 12,
     },
-  }
+  };
 
   public boardOptions4: GithubBoardOptions = {
     labels: {
       showMonth: false,
       showDay: false,
     },
-  }
-
-  public get themes () {
-    return Themes;
-  }
+  };
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public get themes(): typeof Themes {
+    return Themes;
   }
 
 }

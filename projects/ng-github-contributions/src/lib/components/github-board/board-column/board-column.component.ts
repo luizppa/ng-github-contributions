@@ -14,29 +14,29 @@ export class BoardColumnComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
+
   }
 
-  public getMonthLabel (week: ContributionInfo[]) {
-    return week[0].date.getDate() <= 7 ? Months[week[0].date.getMonth()] : null;
+  public getMonthLabel(week: ContributionInfo[]): string {
+    return week[0].date.getDate() <= 7 ? Months[week[0].date.getMonth()] : '';
   }
 
-  public get labelSize () {
+  public get labelSize(): string {
     const size = this.options.labels?.size ?? DEFAULT_LABEL_SIZE;
     return `${size}px`;
   }
 
-  public get labelContainerWidth () {
+  public get labelContainerWidth(): string {
     const size = this.options.cellSize ?? DEFAULT_CELL_SIZE;
     return `${size}px`;
   }
 
-  public get labelContainerHeight () {
+  public get labelContainerHeight(): string {
     const size = this.options.labels?.size ?? DEFAULT_LABEL_SIZE;
     return `${size + 13}px`;
   }
 
-  public get showLabel(){
+  public get showLabel(): boolean {
     return this.options.labels?.showMonth ?? true;
   }
 

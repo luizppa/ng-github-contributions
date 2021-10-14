@@ -128,7 +128,7 @@
       "projectType": "library",
       "root": "projects/ng-github-contributions",
       "sourceRoot": "projects/ng-github-contributions/src",
-      "prefix": "lib",
+      "prefix": "",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",

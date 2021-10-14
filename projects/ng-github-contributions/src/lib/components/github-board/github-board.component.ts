@@ -9,11 +9,11 @@ import { GithubBoardOptions, ContributionInfo, Contributions,  } from '../../typ
   styleUrls: ['./github-board.component.css']
 })
 export class GithubBoardComponent implements OnInit {
-  @Input() profile: string = '';
+  @Input() profile = '';
   @Input() options: GithubBoardOptions = {};
   @Input() onCellClick?: (info: ContributionInfo) => void;
   private endDate: Date = new Date();
-  public loading: boolean = true;
+  public loading = true;
   public weeks: ContributionInfo[][] = [];
 
   constructor(private githubService: GithubServiceService) { }
@@ -22,13 +22,13 @@ export class GithubBoardComponent implements OnInit {
     this.githubService.loadData(this.profile).then((contributions) => this.loadContributions(contributions));
   }
 
-  private loadContributions(contributions: Contributions){
+  private loadContributions(contributions: Contributions): void {
     this.weeks = [];
     const { weeksNumber = DEFAULT_NUMBER_OF_WEEKS } = this.options;
     const firstWeekDay = this.endDate.getDay();
     const currentWeek = new Date(this.endDate);
 
-    for(let i = 0; i < weeksNumber; i++){
+    for (let i = 0; i < weeksNumber; i++){
       this.weeks.push(this.buildWeek(contributions, currentWeek));
       const dayOffset = i === 0 ? firstWeekDay + 1 : 7;
       currentWeek.setDate(currentWeek.getDate() - dayOffset);
@@ -37,10 +37,10 @@ export class GithubBoardComponent implements OnInit {
     this.loading = false;
   }
 
-  private buildWeek(contributions: Contributions, date: Date): ContributionInfo[]{
+  private buildWeek(contributions: Contributions, date: Date): ContributionInfo[] {
     const weekInfo: ContributionInfo[] = [];
     const currentDate = new Date(date);
-    while(weekInfo.length <= date.getDay()){
+    while (weekInfo.length <= date.getDay()){
       const contribution = this.githubService.getContributions(contributions, currentDate);
       weekInfo.push(contribution);
 
@@ -49,29 +49,29 @@ export class GithubBoardComponent implements OnInit {
     return weekInfo.reverse();
   }
 
-  public get labelSize () {
+  public get labelSize(): string {
     const size = this.options.labels?.size ?? DEFAULT_LABEL_SIZE;
     return `${size}px`;
   }
 
-  public get labelContainerHeight () {
+  public get labelContainerHeight(): string {
     const { cellSize = DEFAULT_CELL_SIZE } = this.options;
     return `${(cellSize * 2) + 6}px`;
   }
 
-  public get showLabels () {
+  public get showLabels(): boolean {
     return this.options.labels?.showDay ?? true;
   }
 
-  public get showLegend () {
+  public get showLegend(): boolean {
     return this.options.showLegend ?? true;
   }
 
-  public get minHeight () {
+  public get minHeight(): string {
     const cellSize = this.options.cellSize ?? DEFAULT_CELL_SIZE;
-    let labelSize = this.options.labels?.size ?? DEFAULT_LABEL_SIZE;
+    const labelSize = this.options.labels?.size ?? DEFAULT_LABEL_SIZE;
     const legendSize = 8 + Math.max(12, cellSize);
-    
+
     return `${((cellSize + 6) * 7) + labelSize + legendSize}px`;
   }
 
