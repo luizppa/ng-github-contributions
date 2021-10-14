@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '14.15'
           
-      - run: npm install && npm install -g @angular/cli
+      - run: npm install -g @angular/cli
       - run: ng lint
 
   compile:
@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: '14.15'
           
-      - run: npm install && npm install -g typescript
+      - run: npm install -g typescript
       - run: tsc
 
   build:
