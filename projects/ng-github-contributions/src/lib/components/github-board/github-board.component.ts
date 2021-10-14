@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { DEFAULT_CELL_SIZE, DEFAULT_LABEL_SIZE, DEFAULT_NUMBER_OF_WEEKS } from '../../constants';
 import { GithubServiceService } from '../../services/github-service.service';
 import { GithubBoardOptions, ContributionInfo, Contributions,  } from '../../types';
@@ -8,10 +8,11 @@ import { GithubBoardOptions, ContributionInfo, Contributions,  } from '../../typ
   templateUrl: './github-board.component.html',
   styleUrls: ['./github-board.component.css']
 })
-export class GithubBoardComponent implements OnInit {
+export class GithubBoardComponent implements OnInit, OnChanges {
   @Input() profile = '';
   @Input() options: GithubBoardOptions = {};
   @Input() onCellClick?: (info: ContributionInfo) => void;
+  private contributions?: Contributions = undefined;
   private endDate: Date = new Date();
   public loading = true;
   public weeks: ContributionInfo[][] = [];
@@ -19,7 +20,34 @@ export class GithubBoardComponent implements OnInit {
   constructor(private githubService: GithubServiceService) { }
 
   ngOnInit(): void {
-    this.githubService.loadData(this.profile).then((contributions) => this.loadContributions(contributions));
+    this.loadData();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes.options !== undefined && this.contributions !== undefined){
+      console.log('options changed')
+      this.loadContributions(this.contributions);
+    }
+    if(changes.profile !== undefined){
+      console.log('profile changed')
+      this.loadData();
+    }
+  }
+
+  private loadData(): void {
+    if(!!this.profile){
+      this.githubService.loadData(this.profile).then(
+        (contributions) => {
+          this.contributions = contributions;
+          this.loadContributions(this.contributions);
+        }
+      )
+      .catch((reason) => {
+        if(!reason.internal){
+          Promise.reject(reason);
+        }
+      });
+    }
   }
 
   private loadContributions(contributions: Contributions): void {

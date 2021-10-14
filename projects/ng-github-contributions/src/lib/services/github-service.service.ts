@@ -19,6 +19,9 @@ export class GithubServiceService {
   constructor(private http: HttpClient) { }
 
   public async loadData(profile: string): Promise<Contributions>{
+    if(!profile){
+      return Promise.reject({what: 'Undefined profile', internal: true});
+    }
     return this.http.post(environment.githubDataEndpoint, { profile })
     .toPromise()
     .then((res) => {
