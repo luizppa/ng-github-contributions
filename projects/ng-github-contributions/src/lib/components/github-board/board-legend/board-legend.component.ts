@@ -7,7 +7,7 @@ import { GithubBoardOptions } from '../../../types';
   styleUrls: ['./board-legend.component.css']
 })
 export class BoardLegendComponent implements OnInit {
-  @Input() options: GithubBoardOptions = {}
+  @Input() options: GithubBoardOptions = {};
 
   constructor() { }
 

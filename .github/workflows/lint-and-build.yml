@@ -1,0 +1,47 @@
+name: Run lint, compile and build
+
+on:
+  pull_request:
+      
+  workflow_dispatch:
+    
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      name: 'ts lint'
+      - uses: actions/checkout@v2
+      
+      - uses: actions/setup-node@master
+        with:
+          node-version: '14.15'
+          
+      - run: npm install && npm install -g @angular/cli
+      - run: ng lint
+
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      name: 'ts compile'
+      - uses: actions/checkout@v2
+      
+      - uses: actions/setup-node@master
+        with:
+          node-version: '14.15'
+          
+      - run: npm install && npm install -g typescript
+      - run: tsc
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      name: 'build'
+      - uses: actions/checkout@v2
+      
+      - uses: actions/setup-node@master
+        with:
+          node-version: '14.15'
+          
+      - run: npm install && npm install -g @angular/cli
+      - run: ng build --prod --aot
+      - run: ng build --prod ng-github-contributions

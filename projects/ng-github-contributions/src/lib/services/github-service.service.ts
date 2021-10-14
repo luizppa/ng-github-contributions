@@ -30,7 +30,7 @@ export class GithubServiceService {
 
   private countEvents(userContributions: UserContributions): Contributions {
     const calendar  = userContributions.contributionsCollection.contributionCalendar;
-    const contributions: Contributions = {}
+    const contributions: Contributions = {};
 
     calendar.weeks.forEach((week: WeekContributionInfo) => {
       week.contributionDays.forEach((day: DayContributionInfo) => {
@@ -39,7 +39,7 @@ export class GithubServiceService {
           contributionsCount: day.contributionCount,
           colorIntensity: calendar.colors.indexOf(day.color) as ColorIntensity,
         };
-      })
+      });
     });
 
     return contributions;
@@ -54,7 +54,7 @@ export class GithubServiceService {
   }
 
   private expand(n: number): string{
-    if(n < 10){
+    if (n < 10){
       return `0${n}`;
     }
 
