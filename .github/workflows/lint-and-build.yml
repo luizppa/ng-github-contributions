@@ -1,7 +1,7 @@
 name: Run lint, compile and build
 
 on:
-  pull_request:
+  push:
       
   workflow_dispatch:
     
