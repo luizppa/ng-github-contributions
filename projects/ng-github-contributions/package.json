@@ -1,5 +1,5 @@
 {
-  "name": "ng-github-contributions",
+  "name": "@luizppa/ng-github-contributions",
   "version": "0.0.5",
   "private": false,
   "peerDependencies": {
@@ -29,5 +29,5 @@
   "bugs": {
     "url": "https://github.com/luizppa/ng-github-contributions/issues"
   },
-  "homepage": "https://ghcontributions.luizp.ninja/"
+  "homepage": "https://ghcontributions.luizp.ninja"
 }
