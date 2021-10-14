@@ -8,7 +8,7 @@ import { GithubBoardOptions, Themes } from '../../../../projects/ng-github-contr
 })
 export class HomeComponent implements OnInit {
   public title = 'Angular Github Contributions';
-  public profile = 'luizppa'
+  public profile = 'luizppa';
 
   public boardOptions1: GithubBoardOptions = {
     colorPalette: Themes.orange,

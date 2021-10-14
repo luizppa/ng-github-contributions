@@ -24,18 +24,16 @@ export class GithubBoardComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes.options !== undefined && this.contributions !== undefined){
-      console.log('options changed')
+    if (changes.options !== undefined && this.contributions !== undefined){
       this.loadContributions(this.contributions);
     }
-    if(changes.profile !== undefined){
-      console.log('profile changed')
+    if (changes.profile !== undefined){
       this.loadData();
     }
   }
 
   private loadData(): void {
-    if(!!this.profile){
+    if (!!this.profile){
       this.githubService.loadData(this.profile).then(
         (contributions) => {
           this.contributions = contributions;
@@ -43,7 +41,7 @@ export class GithubBoardComponent implements OnInit, OnChanges {
         }
       )
       .catch((reason) => {
-        if(!reason.internal){
+        if (!reason.internal){
           Promise.reject(reason);
         }
       });
