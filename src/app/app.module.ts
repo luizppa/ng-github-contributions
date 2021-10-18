@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
+import { NgxMdModule } from 'ngx-md';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NavComponent } from './components/nav/nav.component';
     GithubContributionsModule,
     NgbModule,
     HttpClientModule,
+    NgxMdModule.forRoot(),
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

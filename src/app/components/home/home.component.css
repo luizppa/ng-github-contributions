@@ -4,7 +4,7 @@
     margin-bottom: 160;
 }
 
-#overview, #installation, #examples, #usage{
+#overview, #installation, #usage{
     margin: 16px;
     margin-top: 80px;
     margin-bottom: 80px;
@@ -16,7 +16,16 @@
 
 .contributions-container{
     display: inline-block;
+    width: 100%;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 4px;
     margin-bottom: 22px;
+    margin-top: 46px;
+    padding: 16px;
+}
+
+.example-header {
+    margin-top: 22px;
 }
 
 code, pre {

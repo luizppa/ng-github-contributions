@@ -6,13 +6,16 @@
     
     <div id="overview">
         <h3>Overview</h3>
-        <p>The component suports info on hover, and click callbacks.</p>
+        <ngx-md [path]="'assets/code-samples/overview.sample.html'"></ngx-md>
         <div class="contributions-container">
             <github-board [profile]="profile"></github-board>
         </div>
     
-        <p>Optionally, you can specify an options object to configure the appearence fo the board. The possible
-            customizations size, color scheme, labels size, labels toggle and time span.</p>
+        <p>
+            The component suports info on hover, and click callbacks. Optionally, you can specify an options
+            object to configure the appearence fo the board. The possible
+            customizations size, color scheme, labels size, labels toggle and time span.
+        </p>
     </div>
     
     <div id="installation">
@@ -20,11 +23,12 @@
         <p>To install from npm:</p>
         <code>$ npm i ng-github-contributions</code>
         <p>Import <code>GithubContributionsModule</code> into your app module:</p>
-        <img id="import-demo" src="assets/module-import-demo.png" alt="">
+        <!-- <img id="import-demo" src="assets/module-import-demo.png" alt=""> -->
+        <ngx-md [path]="'assets/code-samples/install.sample.ts'"></ngx-md>
     </div>
 
-    <div id="examples">
-        <h3>Examples</h3>
+    <div id="usage">
+        <h3>Usage</h3>
         <p>
             For a custom color palette, you can either specify each field of the <a href="#color-palette-option">colorPalette</a>
             option or you can use one of the presets exported by the module thorugh the <code>Themes</code> constant. The available presets are:
@@ -39,25 +43,33 @@
         <p>
             See the example code and result bellow.
         </p>
+        <h4 class="example-header">Custom colors</h4>
+        <ngx-md [path]="'assets/code-samples/custom-color.sample.ts'"></ngx-md>
+        <ngx-md [path]="'assets/code-samples/custom-color.sample.html'"></ngx-md>
         <div class="contributions-container">
             <github-board [profile]="profile" [options]="boardOptions1"></github-board>
         </div>
-        <p>Custom time span</p>
+        <h4 class="example-header">Custom time span</h4>
+        <ngx-md [path]="'assets/code-samples/custom-time-span.sample.ts'"></ngx-md>
+        <ngx-md [path]="'assets/code-samples/custom-time-span.sample.html'"></ngx-md>
         <div class="contributions-container">
             <github-board [profile]="profile" [options]="boardOptions2"></github-board>
         </div>
-        <p>Custom size</p>
+        <h4 class="example-header">Custom size</h4>
+        <ngx-md [path]="'assets/code-samples/custom-size.sample.ts'"></ngx-md>
+        <ngx-md [path]="'assets/code-samples/custom-size.sample.html'"></ngx-md>
         <div class="contributions-container">
             <github-board [profile]="profile" [options]="boardOptions3"></github-board>
         </div>
-        <p>Hiding labels</p>
+        <h4 class="example-header">Hiding labels</h4>
+        <ngx-md [path]="'assets/code-samples/hiding-labels.sample.ts'"></ngx-md>
+        <ngx-md [path]="'assets/code-samples/hiding-labels.sample.html'"></ngx-md>
         <div class="contributions-container">
             <github-board [profile]="profile" [options]="boardOptions4"></github-board>
         </div>
-    </div>
+
+        <h4>Options</h4>
     
-    <div id="usage">
-        <h3>Usage</h3>
         <p>The available customization options are:</p>
 
         <h4 id="color-palette">GithubBoardOptions object</h4>
