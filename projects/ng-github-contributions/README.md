@@ -28,8 +28,8 @@ Hiding labels
 
 To install from npm:
 
-```
-$ npm i ng-github-contributions
+```sh
+npm i --save @luizppa/ng-github-contributions
 ```
 
 Import `GithubContributionsModule` into your app module:

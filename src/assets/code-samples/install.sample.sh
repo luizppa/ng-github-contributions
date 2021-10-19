@@ -1,0 +1,1 @@
+npm i --save @luizppa/ng-github-contributions

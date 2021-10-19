@@ -13,6 +13,9 @@ export class MyComponent {
             high: '#A83B1D',
             higher: '#5C2010',
         },
+
+        // Or alternatively:
+        // colorPalette: Themes.orange,
     };
 
 }

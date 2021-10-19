@@ -21,47 +21,53 @@
     <div id="installation">
         <h3>Installation</h3>
         <p>To install from npm:</p>
-        <code>$ npm i ng-github-contributions</code>
+        <ngx-md [path]="'assets/code-samples/install.sample.sh'"></ngx-md>
         <p>Import <code>GithubContributionsModule</code> into your app module:</p>
-        <!-- <img id="import-demo" src="assets/module-import-demo.png" alt=""> -->
         <ngx-md [path]="'assets/code-samples/install.sample.js'"></ngx-md>
     </div>
 
     <div id="usage">
         <h3>Usage</h3>
-        <p>
-            For a custom color palette, you can either specify each field of the <a href="#color-palette-option">colorPalette</a>
-            option or you can use one of the presets exported by the module thorugh the <code>Themes</code> constant. The available presets are:
-        </p>
-        <code>
-            default: <board-legend></board-legend><br/>
-            purple:  <board-legend [options]="{colorPalette: themes.purple}"></board-legend><br/>
-            orange:  <board-legend [options]="{colorPalette: themes.orange}"></board-legend><br/>
-            red:     <board-legend [options]="{colorPalette: themes.red}"></board-legend><br/>
-            blue:    <board-legend [options]="{colorPalette: themes.blue}"></board-legend><br/>
-        </code>
-        <p>
-            See the example code and result bellow.
-        </p>
+        <p>See example codes and results bellow.</p>
         <h4 class="example-header">Custom colors</h4>
+        <p>
+            For a custom color palette, you can either specify each field of the
+            <code>colorPalette</code> option or you can use one of the presets exported by the
+            module thorugh the <code>Themes</code> constant. The available presets are:<br/>
+            <code>default:</code> <board-legend></board-legend><br/>
+            <code>purple:</code>  <board-legend [options]="{colorPalette: themes.purple}"></board-legend><br/>
+            <code>orange:</code>  <board-legend [options]="{colorPalette: themes.orange}"></board-legend><br/>
+            <code>red:</code>     <board-legend [options]="{colorPalette: themes.red}"></board-legend><br/>
+            <code>blue:</code>    <board-legend [options]="{colorPalette: themes.blue}"></board-legend><br/>
+        </p>
         <ngx-md [path]="'assets/code-samples/custom-color.sample.js'"></ngx-md>
         <ngx-md [path]="'assets/code-samples/custom-color.sample.html'"></ngx-md>
         <div class="contributions-container">
             <github-board [profile]="profile" [options]="boardOptions1"></github-board>
         </div>
         <h4 class="example-header">Custom time span</h4>
+        <p>The span of weeks shown by the board can also be specified through the <code>weeksNumber</code> option:</p>
         <ngx-md [path]="'assets/code-samples/custom-time-span.sample.js'"></ngx-md>
         <ngx-md [path]="'assets/code-samples/custom-time-span.sample.html'"></ngx-md>
         <div class="contributions-container">
             <github-board [profile]="profile" [options]="boardOptions2"></github-board>
         </div>
         <h4 class="example-header">Custom size</h4>
+        <p>
+            You can use the <code>cellSize</code> property to set the size in pixels of each board cell.
+            This does not affect the spacing between the cells, therefore the bigger the cells,
+            the denser the board will look. The <code>labels</code> object will allow you to set a specifc
+            size for the day and month labels around the board.
+        </p>
         <ngx-md [path]="'assets/code-samples/custom-size.sample.js'"></ngx-md>
         <ngx-md [path]="'assets/code-samples/custom-size.sample.html'"></ngx-md>
         <div class="contributions-container">
             <github-board [profile]="profile" [options]="boardOptions3"></github-board>
         </div>
         <h4 class="example-header">Hiding labels</h4>
+        <p>
+            Through the <code>labels</code> option you can also hide either the day and/or month labels.
+        </p>
         <ngx-md [path]="'assets/code-samples/hiding-labels.sample.js'"></ngx-md>
         <ngx-md [path]="'assets/code-samples/hiding-labels.sample.html'"></ngx-md>
         <div class="contributions-container">
