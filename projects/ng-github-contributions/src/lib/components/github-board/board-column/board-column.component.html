@@ -2,12 +2,12 @@
     <div *ngIf="showLabel" class="horizontal-label" [style.width]="labelContainerWidth" [style.height]="labelContainerHeight">
         <span *ngIf="getMonthLabel(week) !== null" class="label" [style.fontSize]="labelSize">{{ getMonthLabel(week) }}</span>
     </div>
-    <div class="cell-item" *ngFor="let day of week">
-        <board-cell
+    <div class="cells-container">
+        <board-cell *ngFor="let day of week"
             [date]="day.date"
             [contributions]="day.contributionsCount"
             [colorIntensity]="day.colorIntensity"
-            [options]="options">
-        </board-cell>
+            [options]="options"
+        ></board-cell>
     </div>
 </div>

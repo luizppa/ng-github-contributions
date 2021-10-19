@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.columns {
+    overflow-x: auto;
+}
+
 .labels-column{
     display: flex;
     flex-direction: column-reverse;

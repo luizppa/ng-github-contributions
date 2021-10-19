@@ -1,4 +1,4 @@
-<div
+<!-- <div
     class="github-board-cell"
     placement="top"
     [ngbTooltip]="disabled ? '' : tooltipText"
@@ -7,4 +7,24 @@
     [style.backgroundColor]="color"
     [style.width]="size"
     [style.height]="size">
-</div>
+</div> -->
+
+<svg
+    [attr.width]="size + 2"
+    [attr.height]="size + 2"
+    [attr.viewBox]="viewbox"
+    [class.pointer]="!disabled"
+    [ngbTooltip]="disabled ? '' : tooltipText"
+    tooltipClass="tooltip"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <rect
+        [attr.width]="size"
+        [attr.height]="size"
+        [attr.fill]="color" 
+        rx="2"
+        stroke="#1B1F23"
+        stroke-opacity="0.06"
+    />
+</svg>

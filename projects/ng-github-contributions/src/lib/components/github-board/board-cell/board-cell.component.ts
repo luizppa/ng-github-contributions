@@ -39,9 +39,13 @@ export class BoardCellComponent implements OnInit {
     return `${Months[this.date.getMonth()]} ${this.date.getDate()}, ${this.date.getFullYear()}`;
   }
 
-  public get size(): string{
+  public get size(): number{
     const cellSize = this.options.cellSize ?? DEFAULT_CELL_SIZE;
-    return `${cellSize}px`;
+    return cellSize;
+  }
+
+  public get viewbox(): string{
+    return `0 0 ${this.size + 2} ${this.size + 2}`;
   }
 
 }

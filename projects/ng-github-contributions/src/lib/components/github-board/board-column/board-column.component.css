@@ -11,7 +11,13 @@
     font-size: 12px;
 }
 
-.cell-item{
-    margin-top: 3px;
-    margin-bottom: 3px;
+.cells-container{
+    display: flex;
+    flex-direction: column;
+}
+
+board-cell {
+    margin-top: 1px;
+    margin-bottom: 1px;
+    display: flex;
 }

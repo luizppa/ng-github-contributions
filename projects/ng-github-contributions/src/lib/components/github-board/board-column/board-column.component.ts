@@ -26,6 +26,11 @@ export class BoardColumnComponent implements OnInit {
     return `${size}px`;
   }
 
+  public get cellSize(): string {
+    const size = this.options.cellSize ?? DEFAULT_CELL_SIZE;
+    return `${size + 1}px`;
+  }
+
   public get labelContainerWidth(): string {
     const size = this.options.cellSize ?? DEFAULT_CELL_SIZE;
     return `${size}px`;
