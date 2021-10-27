@@ -1,8 +1,8 @@
+
 <div
+    [tooltip]="tooltipText"
     class="github-board-cell"
-    placement="top"
-    [ngbTooltip]="disabled ? '' : tooltipText"
-    tooltipClass="tooltip"
+    [display]="!disabled"
     [class.pointer]="!disabled"
     [style.backgroundColor]="color"
     [style.width]="size"

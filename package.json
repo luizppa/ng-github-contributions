@@ -24,6 +24,7 @@
     "@octokit/graphql": "^4.6.4",
     "bootstrap": "^4.5.0",
     "he": "^1.2.0",
+    "ng2-tooltip-directive": "~2.9.22",
     "ngx-md": "^12.0.5",
     "rxjs": "~6.6.0",
     "rxjs-compat": "^6.6.7",
