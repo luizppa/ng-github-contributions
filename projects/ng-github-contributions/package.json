@@ -5,11 +5,13 @@
   "peerDependencies": {
     "@angular/common": "^11.2.14",
     "@angular/core": "^11.2.14",
-    "ng2-tooltip-directive": "~2.9.22"
+    "ng2-tooltip-directive": "~2.9.22",
+    "nan": "^2.12.1"
   },
   "dependencies": {
     "tslib": "^2.0.0",
-    "ng2-tooltip-directive": "~2.9.22"
+    "ng2-tooltip-directive": "~2.9.22",
+    "nan": "^2.12.1"
   },
   "keywords": [
     "github",
