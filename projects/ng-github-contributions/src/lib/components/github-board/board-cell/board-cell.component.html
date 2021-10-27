@@ -1,7 +1,8 @@
 
 <div
-    [tooltip]="tooltipText"
     class="github-board-cell"
+    [options]="tooltipOptions"
+    [tooltip]="tooltipText"
     [display]="!disabled"
     [class.pointer]="!disabled"
     [style.backgroundColor]="color"
