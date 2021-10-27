@@ -1,4 +1,4 @@
-import { GithubBoardOptions } from 'ng-github-contributions';
+import { GithubBoardOptions } from '@luizppa/ng-github-contributions';
 
 //...
 export class MyComponent {

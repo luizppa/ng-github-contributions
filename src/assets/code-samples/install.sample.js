@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { GithubContributionsModule } from "ng-github-contributions";
+import { GithubContributionsModule } from "@luizppa/ng-github-contributions";
 
 //...
 

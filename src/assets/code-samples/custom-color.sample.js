@@ -1,4 +1,4 @@
-import { GithubBoardOptions, Themes } from 'ng-github-contributions';
+import { GithubBoardOptions, Themes } from '@luizppa/ng-github-contributions';
 
 //...
 export class MyComponent {
