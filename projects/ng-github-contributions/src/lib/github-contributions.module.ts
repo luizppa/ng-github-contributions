@@ -8,6 +8,8 @@ import { BoardLegendComponent } from './components/github-board/board-legend/boa
 import { TooltipModule } from 'ng2-tooltip-directive';
 import { DefaultTooltipOptions } from './constants';
 
+const TooltipImport = TooltipModule.forRoot(DefaultTooltipOptions);
+
 @NgModule({
   declarations: [
     GithubBoardComponent,
@@ -18,7 +20,7 @@ import { DefaultTooltipOptions } from './constants';
   imports: [
     CommonModule,
     NgbModule,
-    TooltipModule.forRoot(DefaultTooltipOptions),
+    TooltipImport,
   ],
   exports: [
     GithubBoardComponent,

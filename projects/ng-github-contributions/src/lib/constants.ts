@@ -1,17 +1,17 @@
 import { TooltipOptions } from 'ng2-tooltip-directive/lib/tooltip-options.interface';
 
 export const DefaultTooltipOptions: TooltipOptions = {
-    'delay': 0,
-    'placement': 'top',
-    'autoPlacement': false,
+    delay: 0,
+    placement: 'top',
+    autoPlacement: false,
+    hideDelayTouchscreen: 0,
+    hideDelayAfterClick: 0,
     'show-delay': 0,
     'hide-delay': 0,
     'hide-delay-mobile': 0,
-    'hideDelayTouchscreen': 0,
     'animation-duration': 0,
     'animation-duration-default': 0,
-    'hideDelayAfterClick': 0,
-}
+};
 
 export const DEFAULT_CELL_SIZE = 10;
 
