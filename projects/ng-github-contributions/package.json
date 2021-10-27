@@ -8,8 +8,8 @@
     "ng2-tooltip-directive": "~2.9.22"
   },
   "dependencies": {
-    "ng2-tooltip-directive": "~2.9.22",
-    "tslib": "~2.9.22"
+    "tslib": "^2.0.0",
+    "ng2-tooltip-directive": "~2.9.22"
   },
   "keywords": [
     "github",
