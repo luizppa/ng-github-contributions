@@ -35,7 +35,7 @@ npm i --save @luizppa/ng-github-contributions
 Import `GithubContributionsModule` into your app module:
 
 ```javascript
-import { GithubContributionsModule } from "ng-github-contributions";
+import { GithubContributionsModule } from "@luizppa/ng-github-contributions";
 
 //...
 

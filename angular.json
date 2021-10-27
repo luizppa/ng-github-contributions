@@ -143,7 +143,6 @@
             }
           },
           "styles": [
-            "node_modules/bootstrap/dist/css/bootstrap.min.css",
             "projects/ng-github-contributions/src/lib/styles.css"
           ] 
         },
