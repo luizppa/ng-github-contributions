@@ -33,6 +33,7 @@ export class GithubBoardComponent implements OnInit, OnChanges {
   }
 
   private loadData(): void {
+    this.loadContributions({});
     if (!!this.profile){
       this.githubService.loadData(this.profile).then(
         (contributions) => {
@@ -91,14 +92,6 @@ export class GithubBoardComponent implements OnInit, OnChanges {
 
   public get showLegend(): boolean {
     return this.options.showLegend ?? true;
-  }
-
-  public get minHeight(): string {
-    const cellSize = this.options.cellSize ?? DEFAULT_CELL_SIZE;
-    const labelSize = this.options.labels?.size ?? DEFAULT_LABEL_SIZE;
-    const legendSize = 8 + Math.max(12, cellSize);
-
-    return `${((cellSize + 6) * 7) + labelSize + legendSize}px`;
   }
 
 }

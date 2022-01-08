@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DEFAULT_CELL_SIZE, Months, Themes } from '../../../constants';
+import { TooltipOptions } from 'ng2-tooltip-directive/lib/tooltip-options.interface';
+import { DEFAULT_CELL_SIZE, Months, Themes, DefaultTooltipOptions } from '../../../constants';
 import { ColorIntensity } from '../../../enums';
 import { GithubBoardOptions } from '../../../types';
 
@@ -14,6 +15,8 @@ export class BoardCellComponent implements OnInit {
   @Input() colorIntensity = 0;
   @Input() options: GithubBoardOptions = {};
   @Input() disabled = false;
+
+  public tooltipOptions: TooltipOptions = DefaultTooltipOptions;
 
   constructor() { }
 

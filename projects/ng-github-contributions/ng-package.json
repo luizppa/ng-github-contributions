@@ -6,6 +6,7 @@
   },
   "allowedNonPeerDependencies": [
     "tslib",
-    "@ng-bootstrap/ng-bootstrap"
+    "ng2-tooltip-directive",
+    "nan"
   ]
 }
